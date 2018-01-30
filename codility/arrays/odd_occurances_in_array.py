@@ -1,11 +1,25 @@
+import unittest
+
 
 def solution(A):
+
+    # since we need to have constant space complexity, our only solution is a
+    # XOR trick - albeit a pretty cool one
+
     missing_int = 0
     for value in A:
-        new_missing_int = missing_int ^ value
-        print(bin(new_missing_int), '=', bin(missing_int), '^', bin(value))
-        missing_int = new_missing_int
+        missing_int = missing_int ^ value
     return missing_int
 
 
-print(solution([32, 2, 1, 3, 32, 2, 3]))
+class TestMissingInteger(unittest.TestCase):
+
+    def test_samples(self):
+        self.assertEqual(solution([9, 3, 9, 3, 9, 7, 9]), 7)
+
+    def test_long(self):
+        self.assertEqual(solution(list(range(1, 500000)) * 2 + [999999]), 999999)
+
+
+if __name__ == '__main__':
+    unittest.main()
