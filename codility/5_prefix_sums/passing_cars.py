@@ -30,7 +30,7 @@ class TestPassingCars(unittest.TestCase):
         self.assertEqual(999990000, solution([0] * 10000 + [1] * 99999))
 
     def test_too_big(self):
-        self.assertEqual(-1, solution([0] * 99999 + [1] * 9999))
+        self.assertEqual(-1, solution([0] * 99999 + [1] * 99999))
 
     def test_small(self):
         self.assertEqual(0, solution([0]))
