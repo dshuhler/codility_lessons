@@ -4,14 +4,22 @@ import unittest
 def solution(X, A):
     leaf_coverage = [False] * X
     frog_position = -1
+
+    # iterate over leaf coverage array
     for time, fallen_leaf_position in enumerate(A):
         leaf_coverage[fallen_leaf_position - 1] = True
 
+        # move our frog across the river as far as we can
+        # this will never be more than N total spaces, so even though we have
+        # nested loops, this is still (O)N
         for num in range(frog_position, X):
             if leaf_coverage[frog_position + 1]:
                 frog_position += 1
+
+                # check if our frog has made it to the other side
                 if frog_position + 1 == X:
                     return time
+
             else:
                 break
 
@@ -32,5 +40,3 @@ class TestPassingCars(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-
-
