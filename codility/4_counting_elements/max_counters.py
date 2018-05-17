@@ -1,7 +1,8 @@
 import unittest
 
-# The trick here is to not scan the whole array of counters every time you need to set them all to the max value, which
-# leads to 0n^2 complexity in worst cases.
+# The trick here is to not scan the whole array of counters every time you
+# need to set them all to the max value, which leads to 0n^2 complexity in
+# worst cases.
 
 
 def solution(N, A):
@@ -36,7 +37,7 @@ class TestMaxCounters(unittest.TestCase):
         self.assertEqual([3, 2, 2, 4, 2], solution(5, [3, 4, 4, 6, 1, 4, 4]))
 
     def test_big_nums(self):
-        self.assertEquals(solution(100000, list(range(1, 100001))), [1] * 100000)
+        self.assertEqual(solution(100000, list(range(1, 100001))), [1] * 100000)
 
 
 if __name__ == '__main__':
