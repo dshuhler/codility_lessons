@@ -25,13 +25,13 @@ def build_nucleotide_sums(nucleotides):
     return nucleotide_sums
 
 
-def solutions(S, P, Q):
+def solution(S, P, Q):
     results = []
 
     nucleotide_sums = build_nucleotide_sums(S)
     for i in range(len(P)):
         start_idx = P[i]
-        end_idx = P[i]
+        end_idx = Q[i]
 
         for j in range(4):
             sub = 0
@@ -39,6 +39,7 @@ def solutions(S, P, Q):
                 sub = nucleotide_sums[start_idx - 1][j]
             if nucleotide_sums[end_idx][j] - sub > 0:
                 results.append(j + 1)
+                break
 
     return results
 
