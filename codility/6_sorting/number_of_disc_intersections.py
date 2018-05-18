@@ -1,0 +1,35 @@
+import unittest
+
+
+def solution(A):
+    disc_edges = []
+    for i, radius in enumerate(A):
+        disc_edges.append((i - radius, "START"))
+        disc_edges.append((i + radius, "END"))
+
+    disc_edges.sort(key=lambda x: (x[0], not x[1]))
+
+    num_intersections = 0
+    active_circles = 0
+
+    for _, edge_type in disc_edges:
+        if edge_type == "START":
+            num_intersections += active_circles
+            active_circles += 1
+        else:
+            active_circles -= 1
+
+        if num_intersections > 10000000:
+            return -1
+
+    return num_intersections
+
+
+class TestNumberOfDiscIntersections(unittest.TestCase):
+
+    def test_sample(self):
+        self.assertEqual(11, solution([1, 5, 2, 1, 4, 0]))
+
+
+if __name__ == '__main__':
+    unittest.main()
