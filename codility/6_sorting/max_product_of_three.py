@@ -12,3 +12,9 @@ class TestMaxProductOfThree(unittest.TestCase):
 
     def test_sample(self):
         self.assertEqual(60, solution([-3, 1, 2, -2, 5, 6]))
+
+    def test_one_big_negative(self):
+        self.assertEqual(60, solution([-300, 1, 2, 2, 5, 6]))
+
+    def test_two_big_negatives(self):
+        self.assertEqual(3600, solution([-300, -1, 2, -2, 5, 6]))
