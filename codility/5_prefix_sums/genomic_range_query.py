@@ -1,9 +1,6 @@
 import unittest
 
-
-def impact_factor(type):
-    impact_factors = {"A": 1, "C": 2, "G": 3, "T": 4}
-    return impact_factors[type]
+# need to create prefix sums for occurances of each letter, in the order of their "impact factor"
 
 
 def build_nucleotide_sums(nucleotides):
@@ -38,7 +35,7 @@ def solution(S, P, Q):
             if start_idx - 1 >= 0:
                 sub = nucleotide_sums[start_idx - 1][j]
             if nucleotide_sums[end_idx][j] - sub > 0:
-                results.append(j + 1)
+                results.append(j + 1)  # adding one to the index gives us "impact factor" - certainly hacky :)
                 break
 
     return results
@@ -47,4 +44,4 @@ def solution(S, P, Q):
 class TestGenomicRangeQuery(unittest.TestCase):
 
     def test_sample(self):
-        self.assertEqual([2, 4, 1], solutions("CAGCCTA", [2, 5, 0], [4, 5, 6]))
+        self.assertEqual([2, 4, 1], solution("CAGCCTA", [2, 5, 0], [4, 5, 6]))
