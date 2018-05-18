@@ -16,7 +16,10 @@ def solution(S):
                 continue
             else:
                 return 0
-    return 1
+    if len(bracket_stack) == 0:
+        return 1
+    else:
+        return 0
 
 
 class TestTriangle(unittest.TestCase):
@@ -26,6 +29,9 @@ class TestTriangle(unittest.TestCase):
 
     def test_false_sample(self):
         self.assertEqual(0, solution("([)()]"))
+
+    def test_odd(self):
+        self.assertEqual(0, solution("([["))
 
 
 if __name__ == '__main__':
