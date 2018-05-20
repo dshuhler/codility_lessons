@@ -27,7 +27,7 @@ def solution(A, B):
     return surviving_downstream_fish + len(upstream_fish)
 
 
-class TestNumberOfDiscIntersections(unittest.TestCase):
+class TestFish(unittest.TestCase):
 
     def test_sample(self):
         self.assertEqual(2, solution([4, 3, 2, 1, 5], [0, 1, 0, 0, 0]))
